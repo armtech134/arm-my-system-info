@@ -1,6 +1,8 @@
 from PySide6.QtWidgets import QMainWindow, QVBoxLayout, QWidget
 
 from features.basic_info.basic_info_list import BasicInfoList
+from features.ram_info import RamInfoList
+from features.disk_info import DiskInfoList
 
 
 class DashboardWindow(QMainWindow):
@@ -10,4 +12,8 @@ class DashboardWindow(QMainWindow):
     container = QWidget()
     layout = QVBoxLayout(container)
     layout.addWidget(BasicInfoList())
+    layout.addWidget(RamInfoList())
+    layout.addWidget(DiskInfoList())
     self.setCentralWidget(container)
+
+
