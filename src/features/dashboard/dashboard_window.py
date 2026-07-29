@@ -1,8 +1,8 @@
 from PySide6.QtWidgets import QMainWindow, QVBoxLayout, QWidget
 
 from features.basic_info.basic_info_list import BasicInfoList
-from features.ram_info import RamInfoList
 from features.disk_info import DiskInfoList
+from features.ram_info import RamInfoList
 
 
 class DashboardWindow(QMainWindow):
