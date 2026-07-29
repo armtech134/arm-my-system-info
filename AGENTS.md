@@ -3,4 +3,5 @@ We're building a Desktop, Or Windows Application to display Various types of Sys
 We're using Feature Based Packaging instead of the old views/..., utils/... approach.
 ## Rules to follow:
 There should be only 1 function per file.
-A Function must not do multiple jobs, Instead, Group the Logic into Multiple Functions.
+A Function must not do multiple jobs, Instead, Group the Logic into Multiple Functions. E.G. If a function is displaying something by first getting and parsing the data from somewhere else, There should be a separate function for Getting and Parsing and a separate function for returning the final result.
+Use 2 spaces indent instead of 4 spaces.
