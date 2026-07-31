@@ -28,19 +28,29 @@ def extract_health_percentage(json_str):
 
     # 1. Try NVMe SSD health
     nvme_log = data.get("nvme_smart_health_information_log")
-    if nvme_log and "percentage_used" in nvme_log:
-      return f"{100 - int(nvme_log['percentage_used'])}%"
+    if nvme_log:
+      percentage_used = nvme_log.get("percentage_used")
+      available_spare = nvme_log.get("available_spare")
+      health_values = []
+      if percentage_used is not None:
+        health_values.append(max(0, 100 - int(percentage_used)))
+      if available_spare is not None:
+        health_values.append(int(available_spare))
+      if health_values:
+        return f"{min(health_values)}%"
 
     # 2. Try SATA SSD health attributes
     ata_attrs = data.get("ata_smart_attributes")
     if ata_attrs and "table" in ata_attrs:
+      health_values = []
       for attr in ata_attrs["table"]:
         attr_id = attr.get("id")
         attr_name = attr.get("name", "").lower()
-        if attr_id in (231, 202, 233, 177) or any(k in attr_name for k in ["life_left", "lifetime_remaining", "wearout", "wear_leveling"]):
-          value = attr.get("value")
-          if value is not None:
-            return f"{value}%"
+        value = attr.get("value")
+        if value is not None and (attr_id in (231, 202, 233, 177, 232) or any(k in attr_name for k in ["life_left", "lifetime_remaining", "wearout", "wear_leveling", "available_reserv", "available_spare", "spare_blocks"])):
+          health_values.append(int(value))
+      if health_values:
+        return f"{min(health_values)}%"
 
     # 3. Check overall SMART status if no percentage attribute is found
     smart_status = data.get("smart_status")

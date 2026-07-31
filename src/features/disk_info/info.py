@@ -2,6 +2,7 @@ import wmi
 
 from features.disk_info.extract_health_percentage import extract_health_percentage
 from features.disk_info.get_disk_space_info import get_disk_space_info
+from features.disk_info.get_wmi_disk_wear import get_wmi_disk_wear
 from features.disk_info.run_smartctl import run_smartctl
 
 
@@ -15,8 +16,21 @@ def get_disk_info():
       device_id = drive.DeviceID
       model = drive.Model
 
-      json_output = run_smartctl(device_id)
+      json_output = run_smartctl(device_id, model)
       health = extract_health_percentage(json_output)
+
+      if health in ("Unknown", "Detection Failed", None):
+        wear_val = get_wmi_disk_wear(device_id)
+        if wear_val is not None:
+          health = f"{max(0, 100 - wear_val)}%"
+        else:
+          wmi_status = getattr(drive, "Status", "Unknown")
+          if wmi_status == "OK":
+            health = "Healthy (WMI)"
+          elif wmi_status == "Pred Fail":
+            health = "Warning (Predicting Failure)"
+          else:
+            health = f"{wmi_status} (WMI)"
 
       info.append(f"  {device_id} ({model}): {health}")
   except Exception:  # noqa: BLE001, S110
