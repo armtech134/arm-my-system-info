@@ -1,0 +1,1 @@
+from features.battery_info.battery_info_list import BatteryInfoList as BatteryInfoList
