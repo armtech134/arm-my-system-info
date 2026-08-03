@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QVBoxLayout, QWidget
 
-from features.basic_info.info import info
+from features.basic_info.info import get_basic_info
 from shared.widgets import ListView
 
 
@@ -9,5 +9,5 @@ class BasicInfoList(QWidget):
     super().__init__()
 
     layout = QVBoxLayout(self)
-    layout.addWidget(ListView(label="Info", items=info)
-)
+    layout.addWidget(ListView(label="Info", items=get_basic_info()))
+

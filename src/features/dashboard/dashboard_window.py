@@ -12,10 +12,10 @@ class DashboardWindow(QMainWindow):
     self.setWindowTitle("My System Info")
 
     tabs = QTabWidget()
-    tabs.addTab(BasicInfoList(), "Basic Info")
-    tabs.addTab(RamInfoList(), "RAM Info")
-    tabs.addTab(DiskInfoList(), "Disk Info")
-    tabs.addTab(BatteryInfoList(), "Battery Info")
+    tabs.addTab(BasicInfoList(), "&Basic Info")
+    tabs.addTab(RamInfoList(), "&RAM Info")
+    tabs.addTab(DiskInfoList(), "&Disk Info")
+    tabs.addTab(BatteryInfoList(), "&Battery Info")
 
     self.setCentralWidget(tabs)
 
