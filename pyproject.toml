@@ -1,16 +1,18 @@
 [project]
-name = "arm-my-system-info"
+name = "about-device"
 version = "1.0.0"
-description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "pyinstaller>=6.21.0",
     "pyside6>=6.11.1",
     "pywin32>=312",
-    "ruff>=0.16.0",
-    "ty>=0.0.64",
     "wmi>=1.5.1",
+]
+[dependency-groups]
+dev = [
+    "pyinstaller>=6.21.0",
+    "ruff>=0.16.2",
 ]
 [tool.ruff]
 indent-width = 2
+

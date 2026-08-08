@@ -19,4 +19,3 @@ class DashboardWindow(QMainWindow):
 
     self.setCentralWidget(tabs)
 
-

@@ -1,10 +1,20 @@
-# Welcome to My System Info
-My System Info is a Windows Application that lets you know about your system without jumping in different Windows and Commands in a Single Place.
-## Setup instructions:
-- Make sure you've installed uv, Use ``` winget install astral-sh.uv ``` If not already installed.
-- Clone the Repo, Use ``` git clone https://github.com/armtech134/arm-my-system-info ```.
-- Go to its directory using ``` cd arm-my-system-info ``` Command.
-- Sync The Project using ``` uv sync ```.
---- Start the Application by running ``` uv run src\main.py ```.
-Again saying, Don't forget to install uv.
+# Welcome to About Device
+About Device is a Windows Application that let's you know many things regarding your System Efertlessly, Without having to jumpt in Multiple Windows.
+## Build Instructions:
+- Install Uv, Python and Git, If not have already. ```
+winget install python.python.3.14 astral-sh.uv git.git
+```
+- Restart your terminal
+- Clone the Repo. ```
+git clone https://github.com/armtech134/about-device
+```
+- Go inside the Directory. ```
+cd about-device
+```
+- Sync the Project. ```
+uv sync
+```
+- Start the App. ```
+uv run src\main.py
+```
 That's it!
