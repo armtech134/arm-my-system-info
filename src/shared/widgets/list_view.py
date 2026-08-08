@@ -6,7 +6,7 @@ class ListView(QWidget):
     if items is None:
       items = []
     super().__init__(parent)
-    self.label = QLabel(f"&{label}")
+    self.label = QLabel(label)
     self.my_list = QListWidget()
     self.my_list.addItems(items)
     self.label.setBuddy(self.my_list)

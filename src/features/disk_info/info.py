@@ -36,7 +36,6 @@ def get_disk_info():
   except Exception:  # noqa: BLE001, S110
     pass
 
-  info.append("")
 
   try:
     info.append("Logical Partitions Space:")

@@ -6,6 +6,7 @@ from shared.elevate_privileges import elevate_privileges
 elevate_privileges()
 
 app = QApplication()
+app.setStyle("Windows")
 window = DashboardWindow()
 window.show()
 app.exec()
